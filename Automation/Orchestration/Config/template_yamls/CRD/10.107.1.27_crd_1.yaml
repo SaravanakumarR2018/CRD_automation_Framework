@@ -1,0 +1,19 @@
+apiVersion: citrix.com/v1
+kind: rewritepolicy
+metadata:
+  name: invalidvalidation
+spec:
+  responder-policies:
+    - servicenames:
+        - citrix-svc
+      responder-policy:
+        respondwith: 
+        comment: 'Blacklist certain Urls'
+    
+        
+  patset:
+    - name: blacklistUrls 
+      values:
+        - '/app1'
+        - '/app2'
+        - '/app3'

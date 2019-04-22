@@ -1,0 +1,45 @@
+{
+
+
+	
+	"policypatset_pattern_binding/k8s_patset_crd_blacklisturls2_0_default_CRDINSTANCEVERSION_blacklistUrl": [
+		{
+			"name": "k8s_patset_crd_blacklisturls2_0_default_CRDINSTANCEVERSION_blacklistUrl",
+			"String": "/app1"
+		},
+		{
+			"name": "k8s_patset_crd_blacklisturls2_0_default_CRDINSTANCEVERSION_blacklistUrl",
+			"String": "/app2"
+		},
+		{
+			"name": "k8s_patset_crd_blacklisturls2_0_default_CRDINSTANCEVERSION_blacklistUrl",
+			"String": "/app3"
+		},
+                {
+                        "name": "k8s_patset_crd_blacklisturls2_0_default_CRDINSTANCEVERSION_blacklistUrl",
+                        "String": "/app4"
+                }
+    ],
+	"responderaction": [
+		{
+			"name": "k8s_respaction_crd_blacklisturls2_0_default_CRDINSTANCEVERSION",
+			"type": "respondwith",
+                        "target": "\"\\\"HTTP\/1.1 401 Access denied\\\"\"",
+			"comment": "Blacklist certain Urls"
+		}
+	],
+	"responderpolicy": [
+		{
+			"name": "k8s_resppolicy_crd_blacklisturls2_0_default_CRDINSTANCEVERSION",
+                        "rule": "http.req.url.equals_any((\"k8s_patset_crd_blacklisturls2_0_default_CRDINSTANCEVERSION_blacklistUrl\"))"
+			"action": "k8s_respaction_crd_blacklisturls2_0_default_CRDINSTANCEVERSION"
+		}
+	],
+	"responderpolicy_lbvserver_binding/k8s_resppolicy_crd_blacklisturls2_0_default_CRDINSTANCEVERSION": [
+	    {
+		    "name": "k8s_resppolicy_crd_blacklisturls2_0_default_CRDINSTANCEVERSION",
+			"boundto": "REQ VSERVER k8s-citrix.default.80.k8s-citrix-svc.default.80.svc"
+		}
+	],
+
+}
